@@ -180,8 +180,8 @@ const Single: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title={`${article.title} - ${profile.name}(${profile.number})`}
-        author={profile.name}
+        title={`${article.title} - Rafael Vieweg`}
+        author="Rafael Vieweg"
         description={`${article?.content}`}
         image={profile.avatar_url}
       />
@@ -230,7 +230,6 @@ const Single: React.FC = () => {
                       type="image"
                     />
                     <div className="masonry">
-                      <strong>Imagens relacionadas</strong>
                       <Masonry elementType="ul" updateOnEachImageLoad>
                         {mansoryElements}
                       </Masonry>
@@ -238,10 +237,7 @@ const Single: React.FC = () => {
                   </>
                 )}
               </Section>
-              <ShareIt
-                path={`/${profile.slug}/p/${article.slug}`}
-                title={article.title}
-              />
+              <ShareIt path={`/p/${article.slug}`} title={article.title} />
             </>
           )}
         </Content>

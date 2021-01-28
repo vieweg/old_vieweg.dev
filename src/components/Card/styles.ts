@@ -44,37 +44,32 @@ export const CardTitle = styled.div`
 
   h1 {
     margin-top: 45px;
+
+    font-size: 28px;
+    text-decoration: none;
+    color: #282a36;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #4b4c56;
+    }
+  }
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 24px;
+    white-space: pre-line;
+
     a {
-      font-size: 28px;
+      font-size: 16px;
       text-decoration: none;
-      color: #282a36;
+      color: #3c89b5;
       transition: all 0.2s;
 
       &:hover {
         color: #4b4c56;
       }
-    }
-  }
-  span {
-    display: flex;
-    align-items: center;
-    color: #333;
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    > svg {
-      width: 16px;
-      height: 16px;
-      color: #999;
-      margin-right: 8px;
-    }
-
-    p {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 18px;
-      margin-top: 24px;
     }
   }
 `;
@@ -86,16 +81,15 @@ export const Section = styled.article`
   min-width: 350px;
   justify-content: center;
 
-  a {
-    img {
-      width: 100%;
-      transition: all 0.2s;
+  img {
+    width: 100%;
+    transition: all 0.2s;
 
-      &:hover {
-        filter: grayscale(30%);
-      }
+    &:hover {
+      filter: grayscale(30%);
     }
   }
+
   p {
     font-weight: 400;
     font-size: 14px;

@@ -5,11 +5,11 @@ export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
       width: '100%',
-      background: '#f0f8ff',
+      background: '#fbfbfb',
       padding: '16px',
     },
     cardTitle: {
-      fontSize: '36px',
+      fontSize: '60px',
       fontWeight: 700,
       lineHeight: 1,
       color: '#3c89b5',
@@ -33,8 +33,8 @@ export const useStyles = makeStyles((theme: Theme) =>
       },
     },
     avatarLarge: {
-      width: '250px',
-      height: '250px',
+      width: '290px',
+      height: '290px',
       fontSize: '150px',
       border: '4px solid #cacaca',
     },
@@ -53,6 +53,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       fontSize: '20px',
       fontWeight: 400,
       color: '#3c89b5',
+      marginTop: '24px',
     },
     cardCoalition: {
       marginTop: '24px',

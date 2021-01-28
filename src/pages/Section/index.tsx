@@ -145,9 +145,9 @@ const Section: React.FC = () => {
           {!contentLoading && !contentError && (
             <>
               <SEO
-                title={`${profile.name}(${profile.number}) - ${contentTitle}`}
-                author={profile.name}
-                description={`${contentTitle} - Acompanhe ${profile.name}(${profile.number}) no portal #PorNavegantes`}
+                title={`${contentTitle} - Rafael Vieweg`}
+                author="Rafael Vieweg"
+                description={`${contentTitle}`}
                 image={profile.avatar_url}
               />
               <Title>{contentTitle}</Title>

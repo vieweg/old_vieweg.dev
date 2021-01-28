@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FiClock } from 'react-icons/fi';
+import React, { useCallback, useState } from 'react';
 
 import Skeleton from 'react-loading-skeleton';
 import ShareIt from '../ShareIt';
@@ -57,21 +55,26 @@ const Card: React.FC<IProps> = ({ data }) => {
   const [imageIsLoading, setImageIsLoading] = useState(true);
   const [imageIsError, setImageIsError] = useState(false);
 
+  const urlify = useCallback(text => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, (url: string) => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">+Click to view</a>`;
+    });
+  }, []);
+
   return (
     <Container>
       <CardTitle>
-        <h1>
-          <Link to={`/${data.user.slug}/p/${data.slug}`}>{data.title}</Link>
-        </h1>
-        <span>
-          <FiClock />
-          {data.formatedDate}
-        </span>
+        <h1>{data.title}</h1>
+        {data.content && (
+          // eslint-disable-next-line
+          <p dangerouslySetInnerHTML={{ __html: urlify(data.content) }} />
+        )}
       </CardTitle>
       {(data.image_url || data.content) && (
         <Section>
           {data.image_url && (
-            <Link to={`/${data.user.slug}/p/${data.slug}`}>
+            <>
               {imageIsLoading && !imageIsError && (
                 <Skeleton width="100%" height="350px" />
               )}
@@ -82,17 +85,11 @@ const Card: React.FC<IProps> = ({ data }) => {
                 onError={() => setImageIsError(true)}
                 style={{ display: imageIsLoading ? 'none' : 'block' }}
               />
-            </Link>
-          )}
-          {data.content && (
-            <p>
-              {data.content.split('', 300)}
-              {data.content.length > 300 && ' [Continua...]'}
-            </p>
+            </>
           )}
         </Section>
       )}
-      <ShareIt path={`/${data.user.slug}/p/${data.slug}`} title={data.title} />
+      <ShareIt path={`/p/${data.slug}`} title={data.title} />
     </Container>
   );
 };

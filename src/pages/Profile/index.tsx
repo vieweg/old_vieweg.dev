@@ -126,9 +126,9 @@ const Profile: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title={`Santinho Virtual - ${profile.name}(${profile.number})`}
-        author={profile.name}
-        description={`Acompanhe ${profile.name}(${profile.number}) no portal #PorNavegantes -> ${profile?.message}`}
+        title="Hello! I'm Rafael Vieweg"
+        author="Rafael Vieweg"
+        description={`${profile?.message}`}
         image={profile.avatar_url}
       />
       <HeaderProfile data={profile} />
@@ -145,7 +145,7 @@ const Profile: React.FC = () => {
             {contentLoading && <SkeletonCard />}
             {!contentLoading && !contentError && (
               <>
-                <Title>Últimas Atualizações</Title>
+                <Title>My latest projects</Title>
                 {contentItems.data.length === 0 && (
                   <div id="empty">Sem registros para exibir</div>
                 )}

@@ -23,8 +23,7 @@ const MenuMobile: React.FC<IMenuProps> = ({ items }) => {
       const timer = setTimeout(() => {
         addToast({
           type: 'success',
-          title: 'Utilize o menu da lateral e saiba muito mais!',
-          description: 'Utilize o menu da lateral do site ;)',
+          title: 'Slide the menu to see my latest projects',
         });
         sessionStorage.setItem('PorNavegantes::ShowHelpMenu', 'true');
       }, 2500);
@@ -43,7 +42,7 @@ const MenuMobile: React.FC<IMenuProps> = ({ items }) => {
     <>
       {items && items.length > 0 && (
         <Button onTouchStart={handleOpenMenu} onClick={handleOpenMenu}>
-          Arraste para saber +
+          Projects +
         </Button>
       )}
       <Container isOpened={isOpened}>
@@ -51,7 +50,7 @@ const MenuMobile: React.FC<IMenuProps> = ({ items }) => {
           <div>
             <button type="button" onClick={handleOpenMenu}>
               <FiX />
-              Fechar
+              Close
             </button>
           </div>
           <ul>

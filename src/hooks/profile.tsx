@@ -31,24 +31,23 @@ const ProfileProvider: React.FC = ({ children }) => {
 
   const { push, location } = useHistory();
 
-  const getProfile = useCallback(
-    async ({ profileSlug }) => {
-      try {
-        const profileResponse = await api.get<IHeaderProfile>(
-          `/profile/${profileSlug}`,
-        );
-        const linksResponse = await api.get(
-          `/links/user/${profileResponse.data.id}`,
-        );
+  const getProfile = useCallback(async () => {
+    const profileSlug = 'rafael-vieweg';
 
-        Object.assign(profileResponse.data, { links: linksResponse.data });
-        setProfile(profileResponse.data);
-      } catch (error) {
-        push('/page/404', location.state);
-      }
-    },
-    [push, location.state],
-  );
+    try {
+      const profileResponse = await api.get<IHeaderProfile>(
+        `/profile/${profileSlug}`,
+      );
+      const linksResponse = await api.get(
+        `/links/user/${profileResponse.data.id}`,
+      );
+
+      Object.assign(profileResponse.data, { links: linksResponse.data });
+      setProfile(profileResponse.data);
+    } catch (error) {
+      push('/page/404', location.state);
+    }
+  }, [push, location.state]);
 
   useEffect(() => {
     async function fechMenuData(): Promise<void> {
@@ -56,21 +55,21 @@ const ProfileProvider: React.FC = ({ children }) => {
         const response = await api.get<IMenuItem[]>(
           `/sections/user/${profile.id}`,
         );
-        const initialItems = [
+        /* const initialItems = [
           {
             id: '1',
-            title: 'Atualizações',
-            slug: 'inicio',
-            path: `/${profile.slug}`,
+            title: 'latest projects',
+            slug: 'home',
+            path: `/`,
           },
-        ];
+        ]; */
 
         const formatedItems = response.data.map(item => {
-          const path = `/${profile.slug}/s/${item.slug}`;
+          const path = `/s/${item.slug}`;
           return { ...item, path };
         });
 
-        setMenuItems([...initialItems, ...formatedItems]);
+        setMenuItems([...formatedItems]);
       } catch (error) {
         setMenuItems(undefined);
       }

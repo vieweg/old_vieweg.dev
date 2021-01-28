@@ -1,15 +1,8 @@
 import { Avatar, Box, Container, Grid } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import {
-  FaFacebookSquare,
-  FaInstagram,
-  FaTwitterSquare,
-  FaYoutubeSquare,
-  FaLinkedin,
-  FaLink,
-  FaWhatsapp,
-} from 'react-icons/fa';
+import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { useStyles, MidiaLinks, LinksUteis } from './styles';
 import btnWhats from '../../assets/btn-whats.png';
 
@@ -47,7 +40,7 @@ interface IProps {
   data: IHeaderProfile;
 }
 
-function switchSocialIconRender(name: string): JSX.Element {
+/* function switchSocialIconRender(name: string): JSX.Element {
   switch (name) {
     case 'facebook':
       return <FaFacebookSquare color="#3b5998" />;
@@ -62,101 +55,86 @@ function switchSocialIconRender(name: string): JSX.Element {
     default:
       return <FaLink />;
   }
-}
+} */
 
 const HeaderProfile: React.FC<IProps> = ({ data }) => {
   const classes = useStyles();
   return (
     <Box className={classes.container}>
       <Container>
-        <Grid container direction="row" justify="center" spacing={4}>
-          <Grid item xs={12} sm="auto">
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          style={{ padding: '25px' }}
+        >
+          <Grid item xs={12} md={4}>
             <Box display="flex" flexDirection="column" alignItems="center">
-              <Avatar
-                src={data.avatar_url}
-                alt={data.name}
-                className={classes.avatarLarge}
-              />
-              <MidiaLinks>
-                Compartilhe meu Cartão
-                <ul>
-                  <li>
-                    <a
-                      href={`https://api.whatsapp.com/send?text=Meu%20candidato%20a%20${data.candidate_for}%20-%20${data.name}%20Veja%20Em:%20${window.location.origin}/${data.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaWhatsapp color="#34af23" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.origin}/${data.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaFacebookSquare color="#3b5998" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`https://twitter.com/home?status=${window.location.origin}/${data.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaTwitterSquare color="#00acee" />
-                    </a>
-                  </li>
-                </ul>
-              </MidiaLinks>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm="auto">
-            <Box display="flex" justifyContent="center" flexDirection="column">
-              <div className={classes.cardTitle}>
-                <div>
-                  {data.name}
-                  <span className={classes.cardNumber}>{data.number}</span>
-                </div>
-              </div>
-              <div className={classes.cardCandidateFor}>
-                Candidato a<span>{data.candidate_for}</span>
-              </div>
-              <div className={classes.cardParty}>{data.party}</div>
-              {data.candidate_vice && (
-                <div className={classes.cardCandidateVice}>
-                  {`Vice: ${data.candidate_vice}`}
-                </div>
-              )}
-              <div className={classes.cardMessage}>{data.message}</div>
-              {data.coalition && (
-                <div className={classes.cardCoalition}>{data.coalition}</div>
-              )}
+              <Link to="/">
+                <Avatar
+                  src={data.avatar_url}
+                  alt={data.name}
+                  className={classes.avatarLarge}
+                />
+              </Link>
+
               {data.socialLinks && data.socialLinks.length > 0 && (
                 <MidiaLinks>
-                  Me acompanhe nas redes sociais
                   <ul>
-                    {data.socialLinks.map(social => (
-                      <li key={social.id}>
-                        <a
-                          href={social.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {switchSocialIconRender(social.name)}
-                        </a>
-                      </li>
-                    ))}
+                    <li>
+                      <a
+                        href="https://www.linkedin.com/in/vieweg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaLinkedin color="#0e76a8" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.instagram.com/rvieweg/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaInstagram color="#E1306C" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.facebook.com/rafael.vieweg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaFacebookSquare color="#3b5998" />
+                      </a>
+                    </li>
                   </ul>
                 </MidiaLinks>
               )}
             </Box>
           </Grid>
-          <Grid item xs={12} sm="auto">
-            <LinksUteis>
-              {data.links &&
-                data.links.length > 0 &&
-                data.links.map(link => {
+          <Grid item xs={12} md={8}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              flexDirection="column"
+              marginTop={3}
+            >
+              <div className={classes.cardTitle}>
+                <div>{data.name}</div>
+              </div>
+              {data.candidate_vice && (
+                <div className={classes.cardCandidateVice}>
+                  {data.candidate_vice}
+                </div>
+              )}
+              <div className={classes.cardMessage}>{data.message}</div>
+            </Box>
+          </Grid>
+          {data.links && data.links.length > 0 && (
+            <Grid item xs={12} sm="auto">
+              <LinksUteis>
+                {data.links.map(link => {
                   return (
                     <li key={link.id}>
                       <a
@@ -170,8 +148,9 @@ const HeaderProfile: React.FC<IProps> = ({ data }) => {
                     </li>
                   );
                 })}
-            </LinksUteis>
-          </Grid>
+              </LinksUteis>
+            </Grid>
+          )}
         </Grid>
       </Container>
       {data.whatsapp && (
@@ -184,7 +163,7 @@ const HeaderProfile: React.FC<IProps> = ({ data }) => {
           }}
         >
           <a
-            href={`https://wa.me/${data.whatsapp}?text=Te%20encontrei%20no%20PorNavegantes,%20podemos%20coversar?`}
+            href={`https://wa.me/${data.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
           >

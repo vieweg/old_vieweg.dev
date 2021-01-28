@@ -14,7 +14,7 @@ const SEO: React.FC<ISEOProps> = ({
   author,
   image,
 }) => (
-  <Helmet title={title} titleTemplate={`${title} :: Por Navegantes`}>
+  <Helmet title={title} titleTemplate={`${title}`}>
     <meta property="og:title" content={title} />
     {description && (
       <meta name="description" content={description.substr(0, 250)} />
@@ -24,7 +24,7 @@ const SEO: React.FC<ISEOProps> = ({
     )}
     {author && <meta property="article:author" content={author} />}
     <meta property="og:image" content={image} />
-    <meta property="og:site_name" content="Por Navegantes" />
+    <meta property="og:site_name" content="Rafael Vieweg" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content={window.location.href} />
     <meta property="og:locale" content="pt_BR" />

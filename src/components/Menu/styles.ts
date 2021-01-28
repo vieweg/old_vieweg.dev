@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ContainerLeft = styled.aside`
   display: flex;
-  flex: 1;
   padding: 0 15px;
   box-shadow: 10px 0 10px -15px #000;
   margin-right: 25px;
