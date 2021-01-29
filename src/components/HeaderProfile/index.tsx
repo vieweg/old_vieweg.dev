@@ -132,6 +132,7 @@ const HeaderProfile: React.FC<IProps> = ({ data }) => {
               {data.message && (
                 <div
                   className={classes.cardMessage}
+                  // eslint-disable-next-line
                   dangerouslySetInnerHTML={{ __html: data.message }}
                 />
               )}
