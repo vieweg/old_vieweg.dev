@@ -10,8 +10,8 @@ export const Button = styled.div`
   top: 30%;
   right: 0;
   background: #1da1f2;
-  padding: 13px;
-  padding-right: 20px;
+  padding: 13px 13px 13px 0;
+  width: 35px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   transition: all 0.2s;
