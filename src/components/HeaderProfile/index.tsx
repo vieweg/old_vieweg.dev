@@ -70,48 +70,55 @@ const HeaderProfile: React.FC<IProps> = ({ data }) => {
           style={{ padding: '25px' }}
         >
           <Grid item xs={12} md={4}>
-            <Box display="flex" flexDirection="column" alignItems="center">
-              <Link to="/">
-                <Avatar
-                  src={data.avatar_url}
-                  alt={data.name}
-                  className={classes.avatarLarge}
-                />
-              </Link>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              height="100%"
+            >
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <Link to="/">
+                  <Avatar
+                    src={data.avatar_url}
+                    alt={data.name}
+                    className={classes.avatarLarge}
+                  />
+                </Link>
 
-              {data.socialLinks && data.socialLinks.length > 0 && (
-                <MidiaLinks>
-                  <ul>
-                    <li>
-                      <a
-                        href="https://www.linkedin.com/in/vieweg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FaLinkedin color="#0e76a8" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.instagram.com/rvieweg/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FaInstagram color="#E1306C" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.facebook.com/rafael.vieweg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FaFacebookSquare color="#3b5998" />
-                      </a>
-                    </li>
-                  </ul>
-                </MidiaLinks>
-              )}
+                {data.socialLinks && data.socialLinks.length > 0 && (
+                  <MidiaLinks>
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.linkedin.com/in/vieweg"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaLinkedin color="#0e76a8" />
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.instagram.com/rvieweg/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaInstagram color="#E1306C" />
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.facebook.com/rafael.vieweg"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FaFacebookSquare color="#3b5998" />
+                        </a>
+                      </li>
+                    </ul>
+                  </MidiaLinks>
+                )}
+              </Box>
             </Box>
           </Grid>
           <Grid item xs={12} md={8}>

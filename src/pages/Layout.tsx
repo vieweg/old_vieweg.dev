@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toolbar, AppBar, Typography, Grid, Hidden } from '@material-ui/core';
+import { Toolbar, AppBar, Typography, Grid } from '@material-ui/core';
 import ReactGA from 'react-ga';
 
 import { Link as RouterLink } from 'react-router-dom';
@@ -24,13 +24,13 @@ const Layout: React.FC = ({ children }) => {
             alignItems="center"
             justify="space-between"
           >
-            <Hidden xsDown>
-              <Grid item style={{ marginRight: '75px' }}>
-                <Typography className={classes.yellow}>
+            <Grid item style={{ marginRight: '75px' }}>
+              <Typography>
+                <RouterLink to="/" className={classes.yellow}>
                   Hello! Be Welcome.
-                </Typography>
-              </Grid>
-            </Hidden>
+                </RouterLink>
+              </Typography>
+            </Grid>
             <Grid item>
               <RouterLink to="/dashboard" className={classes.link}>
                 <Grid

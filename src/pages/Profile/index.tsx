@@ -105,7 +105,7 @@ const Profile: React.FC = () => {
   }, [profile.id, addToast, currentPage]);
 
   useLayoutEffect(() => {
-    const top = 320;
+    const top = 0;
     if (!contentLoading) {
       window.scrollTo({ behavior: 'smooth', top });
     }

@@ -20,7 +20,7 @@ export const Button = styled.div`
   cursor: pointer;
 
   &:hover {
-    padding-right: 20px;
+    width: 40px;
   }
 `;
 

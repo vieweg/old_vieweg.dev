@@ -3,6 +3,7 @@ import React, {
   useState,
   useCallback,
   useLayoutEffect,
+  useRef,
 } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { parseISO, format } from 'date-fns';
@@ -40,6 +41,8 @@ const Section: React.FC = () => {
     profileSlug: string;
     sectionSlug: string;
   }>();
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const { search } = useLocation();
   const { push } = useHistory();
   const { addToast } = useToast();
@@ -110,12 +113,13 @@ const Section: React.FC = () => {
   }, [profile.id, sectionSlug, addToast, currentPage]);
 
   useLayoutEffect(() => {
-    // const top = currentPage === 1 ? 0 : 320;
-    const top = 300;
-    if (!contentLoading) {
-      window.scrollTo({ behavior: 'smooth', top });
+    if (!contentLoading && contentRef.current) {
+      contentRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
-  }, [contentLoading, currentPage]);
+  }, [contentLoading]);
 
   const handleNextPage = useCallback(() => {
     if (contentItems.nextPage) {
@@ -132,7 +136,7 @@ const Section: React.FC = () => {
   return (
     <Layout>
       <HeaderProfile data={profile} />
-      <Container>
+      <Container ref={contentRef}>
         <Menu items={menuItems} position="left" />
         <Content>
           {contentError && (
