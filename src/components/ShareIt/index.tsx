@@ -9,7 +9,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
 }
 const ShareIt: React.FC<IProps> = ({ path, title, ...rest }: IProps) => (
   <Container {...rest}>
-    <strong>Compartilhe isto</strong>
+    <strong>Share it!</strong>
     <ul>
       <li>
         <a

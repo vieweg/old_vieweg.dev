@@ -7,11 +7,11 @@ export const Button = styled.div`
   position: fixed;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  top: 45%;
+  top: 30%;
   right: 0;
   background: #1da1f2;
   padding: 13px;
-  padding-right: 13px;
+  padding-right: 20px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   transition: all 0.2s;

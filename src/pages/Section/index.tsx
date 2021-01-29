@@ -150,7 +150,7 @@ const Section: React.FC = () => {
                 description={`${contentTitle}`}
                 image={profile.avatar_url}
               />
-              <Title>{contentTitle}</Title>
+              <Title />
               {contentItems.data.length === 0 && (
                 <div id="empty">Sem registros para exibir</div>
               )}

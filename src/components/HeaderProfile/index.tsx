@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Grid } from '@material-ui/core';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa';
@@ -59,6 +59,7 @@ interface IProps {
 
 const HeaderProfile: React.FC<IProps> = ({ data }) => {
   const classes = useStyles();
+
   return (
     <Box className={classes.container}>
       <Container>
@@ -128,7 +129,12 @@ const HeaderProfile: React.FC<IProps> = ({ data }) => {
                   {data.candidate_vice}
                 </div>
               )}
-              <div className={classes.cardMessage}>{data.message}</div>
+              {data.message && (
+                <div
+                  className={classes.cardMessage}
+                  dangerouslySetInnerHTML={{ __html: data.message }}
+                />
+              )}
             </Box>
           </Grid>
           {data.links && data.links.length > 0 && (
