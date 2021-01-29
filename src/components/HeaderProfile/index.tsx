@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Grid } from '@material-ui/core';
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa';
